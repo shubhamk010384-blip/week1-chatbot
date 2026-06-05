@@ -17,13 +17,7 @@ week1-chatbot/
 │── README.md
 │── SUBMISSION.md
 
-## Setup
 
-### 1. Clone Repo
-```bash
-git clone <your-repo-url>
-cd week1-chatbot
-```
 
 ### 2. Install Dependencies
 ```bash
