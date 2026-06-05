@@ -2,25 +2,26 @@ import os
 from dotenv import load_dotenv
 import google.generativeai as genai
 
+
 load_dotenv()
+
 
 api_key = os.getenv("GEMINI_API_KEY")
 
 if not api_key:
-    raise ValueError("GEMINI_API_KEY not found. Add it to .env file")
+    raise ValueError("GEMINI_API_KEY not found in .env file")
+
 
 genai.configure(api_key=api_key)
 
+
 model = genai.GenerativeModel("gemini-1.5-flash")
 
-chat_history = [
-    {
-        "role": "user",
-        "parts": ["You are a helpful AI chatbot. Keep memory of the conversation."]
-    }
-]
 
-print("🤖 Week 1 Chatbot (type 'exit' to quit)")
+chat_history = []
+
+print("🤖 Week 1 Chatbot")
+print("Type 'exit' to quit.\n")
 
 while True:
     user_input = input("You: ")
@@ -29,16 +30,19 @@ while True:
         print("Bot: Goodbye! 👋")
         break
 
+   
     chat_history.append({
         "role": "user",
         "parts": [user_input]
     })
 
+  
     response = model.generate_content(chat_history)
-    bot_reply = response.text
 
+    bot_reply = response.text
     print("Bot:", bot_reply)
 
+   
     chat_history.append({
         "role": "model",
         "parts": [bot_reply]
