@@ -15,7 +15,7 @@ week1-chatbot/
 │── .env.example
 │── .gitignore
 │── README.md
-```
+│── SUBMISSION.md
 
 ## Setup
 
