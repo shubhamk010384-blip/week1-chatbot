@@ -1,6 +1,6 @@
 # Week 1 Chatbot – CSOT26 GenAI Agentic
 
-A terminal-based chatbot using Gemini API with:
+A terminal-based chatbot using OpenRouter:
 - Multi-turn conversation memory
 - Secure API key using `.env`
 - CLI interaction
@@ -22,10 +22,9 @@ week1-chatbot/
 Rename `.env.example` to `.env` and add:
 
 ```env
-GEMINI_API_KEY=your_api_key_here
+OPENROUTER_API_KEY=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
 ```
 
-Get a Gemini API key from Google AI Studio.
 
 ### 4. Run Chatbot
 ```bash
