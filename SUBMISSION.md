@@ -13,7 +13,7 @@ The objective of Week 1 was to build a terminal-based chatbot using a Large Lang
 
 ## What I Built
 
-I implemented a terminal-based chatbot using the **Google Gemini API** (`gemini-1.5-flash`) in Python. The chatbot allows users to have continuous conversations through the command line interface (CLI).
+I implemented a terminal-based chatbot using the **OpenRouter API ** (free model) in Python. The chatbot allows users to have continuous conversations through the command line interface (CLI).
 
 The chatbot supports:
 
@@ -86,7 +86,7 @@ Some challenges during implementation included:
 * Managing multi-turn memory correctly
 * Keeping API keys secure while making the repository public
 
-These challenges were solved using Gemini documentation, environment variables, and chat history implementation.
+These challenges were solved using OpenRouter documentation, environment variables, and chat history implementation.
 
 ---
 
@@ -104,4 +104,4 @@ Through this task, I learned:
 
 ## Conclusion
 
-This project successfully fulfills the Week 1 requirements by implementing a secure, terminal-based chatbot with memory and multi-turn interaction using the Gemini API.
+This project successfully fulfills the Week 1 requirements by implementing a secure, terminal-based chatbot with memory and multi-turn interaction using the  OpenRouter API.
