@@ -19,7 +19,7 @@ week1-chatbot/
 ```
 
 ### 3. Add API Key
-Rename `.env.example` to `.env` and add:
+
 
 ```env
 OPENROUTER_API_KEY=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
