@@ -27,7 +27,7 @@ The chatbot supports:
 ## Technologies Used
 
 * **Python** – Main programming language
-* **Google Gemini API** – LLM used for chatbot responses
+* **OpenRouter API** – LLM used for chatbot responses
 * **python-dotenv** – For securely loading API keys from environment variables
 * **GitHub** – Version control and project hosting
 
@@ -35,12 +35,12 @@ The chatbot supports:
 
 ## How I Decided to Implement the Task
 
-I selected the **Gemini API** because it is easy to integrate with Python and provides fast response generation. It also offers a beginner-friendly setup for educational projects.
+I selected the **Free OpenRouter model** because it is easy to integrate with Python and provides fast response generation. It also offers a beginner-friendly setup for educational projects.
 
 For implementation, I divided the task into smaller components:
 
 1. **API Integration**
-   First, I connected the chatbot to the Gemini API to generate responses.
+   First, I connected the chatbot to the OpenRouter API to generate responses.
 
 2. **Secure API Key Handling**
    Instead of hardcoding API keys in the source code, I used a `.env` file and `python-dotenv`. This approach improves security and follows best development practices.
@@ -55,9 +55,9 @@ For implementation, I divided the task into smaller components:
 
 ## Key Decisions and Why They Were Made
 
-### 1. Why Gemini API?
+### 1. Why OpenRouter API?
 
-I chose Gemini because:
+I chose OpenRouter because:
 
 * It is easy to set up
 * Fast response generation
@@ -82,7 +82,7 @@ The Week 1 task specifically required a terminal chatbot, so I implemented inter
 
 Some challenges during implementation included:
 
-* Understanding Gemini API integration
+* Understanding OpenRouter API integration
 * Managing multi-turn memory correctly
 * Keeping API keys secure while making the repository public
 
