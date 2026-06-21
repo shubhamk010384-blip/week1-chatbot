@@ -33,9 +33,14 @@ class Agent:
 
     def session_path(self):
 
-        return (
-            f"sessions/{self.session_id}.json"
-        )
+    os.makedirs(
+        "sessions",
+        exist_ok=True
+    )
+
+    return (
+        f"sessions/{self.session_id}.json"
+    )
 
     def save_session(self):
 
