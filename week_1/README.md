@@ -10,12 +10,14 @@ A terminal-based chatbot using OpenRouter:
 
 ```txt
 week1-chatbot/
-│── chatbot.py
-│── requirements.txt
-│── .env.example
-│── .gitignore
-│── README.md
-│── SUBMISSION.md
+├── chatbot.py
+├── build1.py
+├── build2.py
+├── requirements.txt
+├── .env.example
+├── .gitignore
+├── README.md
+├── SUBMISSION.md
 ```
 
 ### 3. Add API Key
