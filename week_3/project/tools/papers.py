@@ -17,9 +17,11 @@ def paper_search(query):
         return {"error": str(e)}
 
 
+
 def read_paper(arxiv_id):
 
     return {
-        "message":
-        f"Paper reader placeholder for {arxiv_id}"
+        "arxiv_id": arxiv_id,
+        "content":
+        f"Paper content for {arxiv_id}"
     }
