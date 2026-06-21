@@ -22,6 +22,36 @@ The chatbot supports:
 * Command-line interaction
 * Context-aware responses using chat history
 
+
+
+## Additional Features Implemented
+
+To improve the chatbot and satisfy the Week 1 requirements, I added the following features:
+
+### ChatAgent Class
+
+The chatbot logic is encapsulated inside a reusable `ChatAgent` class. The class manages conversation history, model configuration, and API communication.
+
+### Model Selection Menu
+
+Before starting the conversation, the user can choose between multiple OpenRouter models. This makes the chatbot more flexible and allows easy experimentation with different LLMs.
+
+### Configurable Conversation Buffer
+
+The chatbot supports a configurable `max_history_turns` parameter. This controls how many conversation turns are retained in memory.
+
+### History Trimming
+
+When the conversation exceeds the configured limit, older messages are automatically removed while preserving the system prompt. This prevents the conversation history from growing indefinitely.
+
+### Standalone Build Scripts
+
+Two additional scripts were created:
+
+* `build1.py` – Performs a single-turn API call and prints the raw response object.
+* `build2.py` – Demonstrates response parsing and prints both the generated text and the full response object.
+
+
 ---
 
 ## Technologies Used
@@ -46,7 +76,7 @@ For implementation, I divided the task into smaller components:
    Instead of hardcoding API keys in the source code, I used a `.env` file and `python-dotenv`. This approach improves security and follows best development practices.
 
 3. **Conversation Memory**
-   To make the chatbot remember previous messages, I implemented a `chat_history` list. Each user message and model response is stored and passed again to the model, enabling contextual conversation.
+   To make the chatbot remember previous messages, I implemented conversation memory inside a reusable `ChatAgent` class. The class stores user and assistant messages, manages conversation history, and automatically trims older messages when the configured history limit is exceeded.
 
 4. **Terminal Interface**
    Since Week 1 required a CLI chatbot, I used Python’s `input()` and `print()` functions for interaction.
@@ -70,7 +100,7 @@ I used a `.env` file to securely store API keys. This prevents accidental exposu
 
 ### 3. Why Store Chat History?
 
-The chatbot required memory. Without storing history, the model would treat every question independently. By maintaining `chat_history`, the chatbot can understand context and respond more naturally.
+The chatbot required memory. Without storing history, the model would treat every question independently. By maintaining conversation history inside the `ChatAgent` class, the chatbot can understand context, provide more natural responses, and preserve relevant information across multiple turns.
 
 ### 4. Why Command Line Interface?
 
@@ -92,6 +122,12 @@ These challenges were solved using OpenRouter documentation, environment variabl
 
 ## Learning Outcomes
 
+* Designing reusable software using Python classes
+* Managing conversation context with bounded memory
+* Implementing configurable chatbot settings
+* Structuring AI projects with multiple utility scripts
+
+
 Through this task, I learned:
 
 * How LLM APIs work
@@ -104,4 +140,4 @@ Through this task, I learned:
 
 ## Conclusion
 
-This project successfully fulfills the Week 1 requirements by implementing a secure, terminal-based chatbot with memory and multi-turn interaction using the  OpenRouter API.
+This project fulfills the Week 1 requirements by implementing a terminal-based chatbot with a reusable ChatAgent class, model selection, configurable conversation memory, secure API key management, standalone build scripts, and multi-turn interaction using the OpenRouter API.
