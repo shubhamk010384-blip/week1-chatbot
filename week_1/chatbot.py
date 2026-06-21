@@ -43,7 +43,7 @@ while True:
 
     
     response = client.chat.completions.create(
-        model=model="meta-llama/llama-3.1-8b-instruct:free",
+        model="meta-llama/llama-3.1-8b-instruct:free",
         messages=chat_history
     )
 
