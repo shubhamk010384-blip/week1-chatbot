@@ -16,6 +16,22 @@ client = OpenAI(
     api_key=api_key,
     base_url="https://openrouter.ai/api/v1"
 )
+MODELS = {
+    "1": "meta-llama/llama-3.1-8b-instruct:free",
+    "2": "deepseek/deepseek-r1-0528:free"
+}
+
+print("Choose Model")
+print("1. Llama 3.1")
+print("2. DeepSeek")
+
+choice = input("Enter choice: ")
+
+selected_model = MODELS.get(choice)
+
+if selected_model is None:
+    print("Invalid choice")
+    exit()
 
 
 chat_history = [
@@ -43,7 +59,7 @@ while True:
 
     
     response = client.chat.completions.create(
-        model="meta-llama/llama-3.1-8b-instruct:free",
+        model=selected_model,
         messages=chat_history
     )
 
