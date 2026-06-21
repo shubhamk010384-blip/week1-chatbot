@@ -4,6 +4,10 @@ import os
 from dotenv import load_dotenv
 from openai import OpenAI
 
+from tools.web import web_search, web_fetch
+from tools.files import read_file, write_file, list_files
+from tools.papers import paper_search, read_paper
+
 load_dotenv()
 
 client = OpenAI(
@@ -14,18 +18,18 @@ client = OpenAI(
 
 class Agent:
 
-    def __init__(
-        self,
-        session_id="default"
-    ):
+    def __init__(self, session_id="default"):
 
         self.session_id = session_id
 
         self.messages = [
             {
                 "role": "system",
-                "content":
-                "You are Research Desk."
+                "content": (
+                    "You are Research Desk. "
+                    "You can use web search, paper search, "
+                    "and file tools to help with research."
+                )
             }
         ]
 
@@ -33,24 +37,25 @@ class Agent:
 
     def session_path(self):
 
-    os.makedirs(
-        "sessions",
-        exist_ok=True
-    )
+        os.makedirs(
+            "sessions",
+            exist_ok=True
+        )
 
-    return (
-        f"sessions/{self.session_id}.json"
-    )
+        return f"sessions/{self.session_id}.json"
 
     def save_session(self):
 
         with open(
             self.session_path(),
-            "w"
+            "w",
+            encoding="utf-8"
         ) as f:
+
             json.dump(
                 self.messages,
-                f
+                f,
+                indent=2
             )
 
     def load_session(self):
@@ -58,12 +63,13 @@ class Agent:
         try:
             with open(
                 self.session_path(),
-                "r"
+                "r",
+                encoding="utf-8"
             ) as f:
 
                 self.messages = json.load(f)
 
-        except:
+        except FileNotFoundError:
             pass
 
     def run(self, query):
@@ -75,19 +81,12 @@ class Agent:
             }
         )
 
-        response = (
-            client.chat.completions.create(
-                model="openai/gpt-4o-mini",
-                messages=self.messages
-            )
+        response = client.chat.completions.create(
+            model="openai/gpt-4o-mini",
+            messages=self.messages
         )
 
-        reply = (
-            response
-            .choices[0]
-            .message
-            .content
-        )
+        reply = response.choices[0].message.content
 
         self.messages.append(
             {
@@ -105,19 +104,18 @@ class REPLAgent(Agent):
 
     def run_loop(self):
 
+        print("🔬 Week 3 Research Desk")
+        print("Type 'exit' to quit.\n")
+
         while True:
 
             q = input("You: ")
 
-            if q.lower() in [
-                "exit",
-                "quit"
-            ]:
+            if q.lower() in ["exit", "quit"]:
+                print("Goodbye!")
                 break
 
-            print(
-                self.run(q)
-            )
+            print("Bot:", self.run(q))
 
 
 if __name__ == "__main__":
